@@ -6,7 +6,7 @@ using System.Xml.Xsl;
 using NewspaperConsole.Models;
 using NewspaperConsole.Utils;
 
-var path = "C:\\Users\\gogii\\Desktop\\4 курс 1 семестр\\ИТРОИ\\Newspaper\\NewspaperConsole\\xml\\";
+var path = "C:\\Users\\gogii\\Desktop\\4 курс 1 семестр\\ИТРОИ\\NewspaperGit\\Newspaper\\NewspaperConsole\\xml\\";
 var schemas = new XmlSchemas();
 var exporter = new XmlSchemaExporter(schemas);
 var mapping = new XmlReflectionImporter().ImportTypeMapping(typeof(Article));
