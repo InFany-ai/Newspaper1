@@ -2,27 +2,33 @@
 
 namespace NewspaperConsole.Utils;
 
-public static class ArticleGenerator
+public static class EntityGenerator
 {
     public static Article GetConstArticle()
     {
         var article = new Article
         {
-            ArticleId = 1,
+            Id = 1,
             Title = "Article Title",
             Body = "Article Body",
-            AuthorId = 1,
+            Author = new Author()
+            {
+                Id = 1,
+                FirstName = "Author FirstName",
+                LastName = "Author LastName",
+                Age = 20,
+            },
             Comments = new List<Comment>
             {
                 new Comment
                 {
-                    CommentId = 1,
+                    Id = 1,
                     Body = "Comment Body1",
                     ArticleId = 1
                 },
                 new Comment
                 {
-                    CommentId = 2,
+                    Id = 2,
                     Body = "Comment Body1",
                     ArticleId = 1
                 }
@@ -31,14 +37,14 @@ public static class ArticleGenerator
             {
                 new Grade
                 {
-                    GradeId = 1,
+                    Id = 1,
                     ArticleId = 1,
                     AuthorId = 1,
                     Value = 5
                 },
                 new Grade
                 {
-                    GradeId = 2,
+                    Id = 2,
                     ArticleId = 1,
                     AuthorId = 1,
                     Value = 4
@@ -46,5 +52,16 @@ public static class ArticleGenerator
             }
         };
         return article;
+    }
+
+    public static Grade GetConstGrade()
+    {
+        return new Grade()
+        {
+            Id = 1,
+            Value = 5,
+            ArticleId = 1,
+            AuthorId = 1
+        };
     }
 }
