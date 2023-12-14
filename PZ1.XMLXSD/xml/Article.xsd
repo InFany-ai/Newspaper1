@@ -1,80 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="Article" nillable="true" type="Article" />
-  <xs:complexType name="Article">
-    <xs:complexContent mixed="false">
-      <xs:extension base="EntityWithId">
-        <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="Title" type="xs:string" />
-          <xs:element minOccurs="0" maxOccurs="1" name="Body" type="xs:string" />
-          <xs:element minOccurs="0" maxOccurs="1" name="Comments" type="ArrayOfComment" />
-          <xs:element minOccurs="0" maxOccurs="1" name="Grades" type="ArrayOfGrade" />
-          <xs:element minOccurs="0" maxOccurs="1" name="Author" type="Author" />
-          <xs:element minOccurs="0" maxOccurs="1" name="ArticleTags" type="ArrayOfArticleTag" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="EntityWithId">
-    <xs:sequence>
-      <xs:element minOccurs="1" maxOccurs="1" name="Id" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="ArticleTag">
-    <xs:complexContent mixed="false">
-      <xs:extension base="EntityWithId">
-        <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
-          <xs:element minOccurs="1" maxOccurs="1" name="ArticleId" type="xs:int" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Author">
-    <xs:complexContent mixed="false">
-      <xs:extension base="EntityWithId">
-        <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="FirstName" type="xs:string" />
-          <xs:element minOccurs="0" maxOccurs="1" name="LastName" type="xs:string" />
-          <xs:element minOccurs="1" maxOccurs="1" name="Age" type="xs:int" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Grade">
-    <xs:complexContent mixed="false">
-      <xs:extension base="EntityWithId">
-        <xs:sequence>
-          <xs:element minOccurs="1" maxOccurs="1" name="ArticleId" type="xs:int" />
-          <xs:element minOccurs="1" maxOccurs="1" name="AuthorId" type="xs:int" />
-          <xs:element minOccurs="1" maxOccurs="1" name="Value" type="xs:int" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Comment">
-    <xs:complexContent mixed="false">
-      <xs:extension base="EntityWithId">
-        <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="Body" type="xs:string" />
-          <xs:element minOccurs="1" maxOccurs="1" name="ArticleId" type="xs:int" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="ArrayOfComment">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Comment" nillable="true" type="Comment" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="ArrayOfGrade">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Grade" nillable="true" type="Grade" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="ArrayOfArticleTag">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ArticleTag" nillable="true" type="ArticleTag" />
-    </xs:sequence>
-  </xs:complexType>
-</xs:schema>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://article.nure.ua/entity/article/"
+           xmlns:n="http://article.nure.ua/entity/"
+           xmlns:tns="http://article.nure.ua/entity/article/"
+           elementFormDefault="qualified"
+>
+  <xsd:import namespace="http://article.nure.ua/entity/" schemaLocation="EntityWithId.xsd"/>
+  <xsd:include schemaLocation="ArticleTag.xsd"/>
+  <xsd:include schemaLocation="Author.xsd"/>
+  <xsd:include schemaLocation="Comment.xsd"/>
+  <xsd:include schemaLocation="Grade.xsd"/>
+
+  <xsd:complexType name="Article">
+    <xsd:complexContent>
+      <xsd:extension base="n:EntityWithId">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Title" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Body" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Author" type="tns:Author" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArticleTag" type="tns:ArticleTag" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Comment" type="tns:Comment" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Grade" type="tns:Grade" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+ 
+</xsd:schema>

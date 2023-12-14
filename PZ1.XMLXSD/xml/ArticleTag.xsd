@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://article.nure.ua/entity/article/"
+           xmlns:ent="http://article.nure.ua/entity/"
+>
+  <xsd:import namespace="http://article.nure.ua/entity/" schemaLocation="EntityWithId.xsd"/>
+  <xsd:complexType name="ArticleTag">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="ent:EntityWithId">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="ArticleId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>
