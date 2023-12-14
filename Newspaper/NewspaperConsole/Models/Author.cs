@@ -1,4 +1,6 @@
-﻿namespace NewspaperConsole.Models;
+﻿using NewspaperConsole.Models.Base;
+
+namespace NewspaperConsole.Models;
 
 public class Author : EntityWithId
 {

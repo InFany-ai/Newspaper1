@@ -1,4 +1,6 @@
-﻿namespace NewspaperConsole.Models;
+﻿using NewspaperConsole.Models.Base;
+
+namespace NewspaperConsole.Models;
 
 public class Article : EntityWithId
 {
@@ -7,4 +9,5 @@ public class Article : EntityWithId
     public List<Comment> Comments { get; set; } = null!;
     public List<Grade> Grades { get; set; } = null!;
     public Author Author { get; set; } = null!;
+    public List<ArticleTag> ArticleTags { get; set; } = null!;
 }

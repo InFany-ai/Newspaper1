@@ -1,4 +1,5 @@
-﻿using NewspaperConsole.Models;
+﻿using AutoFixture;
+using NewspaperConsole.Models;
 
 namespace NewspaperConsole.Utils;
 
@@ -39,15 +40,28 @@ public static class EntityGenerator
                 {
                     Id = 1,
                     ArticleId = 1,
-                    AuthorId = 1,
                     Value = 5
                 },
                 new Grade
                 {
                     Id = 2,
                     ArticleId = 1,
-                    AuthorId = 1,
                     Value = 4
+                }
+            },
+            ArticleTags = new List<ArticleTag>
+            {
+                new ArticleTag
+                {
+                    Id = 1,
+                    ArticleId = 1,
+                    Name = "Tag1"
+                },
+                new ArticleTag
+                {
+                    Id = 2,
+                    ArticleId = 1,
+                    Name = "Tag2"
                 }
             }
         };
@@ -61,7 +75,15 @@ public static class EntityGenerator
             Id = 1,
             Value = 5,
             ArticleId = 1,
-            AuthorId = 1
         };
+    }
+
+    public static List<Article> GetListArticles(int count)
+    {
+        var fixture = new Fixture();
+        var articles = fixture.Build<Article>()
+            .CreateMany(count)
+            .ToList();
+        return articles;
     }
 }

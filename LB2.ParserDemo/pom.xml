@@ -107,8 +107,9 @@
 					<clearOutputDir>false</clearOutputDir>
 					<!-- <outputDirectory>${basedir}/gen src/main/java</outputDirectory> -->
 					<sources>
-						<source>${basedir}/xml/Article.xsd</source>
+						<source>${basedir}\xml\Articles.xsd</source>
 					</sources>
+
 				</configuration>
 			</plugin>
 		</plugins>

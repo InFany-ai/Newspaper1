@@ -18,7 +18,7 @@
                     .section {
                     margin-bottom: 20px;
                     }
-                    .comment, .grade {
+                    .temp-c {
                     border: 1px solid #ccc;
                     padding: 10px;
                     margin-bottom: 10px;
@@ -56,7 +56,7 @@
     </xsl:template>
 
     <xsl:template match="Comment">
-        <div class="comment">
+        <div class="temp-c">
             <p><strong>Comment ID:</strong> <xsl:value-of select="CommentId"/></p>
             <p><strong>Comment Body:</strong> <xsl:value-of select="Body"/></p>
             <p><strong>Article ID:</strong> <xsl:value-of select="ArticleId"/></p>
@@ -64,7 +64,7 @@
     </xsl:template>
 
     <xsl:template match="Grade">
-        <div class="grade">
+        <div class="temp-c">
             <p><strong>Grade ID:</strong> <xsl:value-of select="GradeId"/></p>
             <p><strong>Article ID:</strong> <xsl:value-of select="ArticleId"/></p>
             <p><strong>Author ID:</strong> <xsl:value-of select="AuthorId"/></p>

@@ -7,4 +7,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="AutoFixture" Version="5.0.0-preview0006" />
+    </ItemGroup>
+
 </Project>

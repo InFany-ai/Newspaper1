@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 
 namespace NewspaperConsole.Utils;
@@ -18,9 +19,12 @@ public static class XsdGenerator
             Encoding = new UTF8Encoding(false)
         };
 
-        using (XmlWriter writer = XmlWriter.Create($"{path}{type.Name}.xsd", settingsA))
+        foreach (XmlSchema schema in schemas)
         {
-            schemas.First().Write(writer);;
+            using (XmlWriter writer = XmlWriter.Create($"{path}{type.Name}.xsd", settingsA))
+            {
+                schema.Write(writer);;
+            }
         }
     }
 }

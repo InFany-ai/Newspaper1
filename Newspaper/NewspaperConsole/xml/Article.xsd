@@ -2,25 +2,69 @@
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="Article" nillable="true" type="Article" />
   <xs:complexType name="Article">
+    <xs:complexContent mixed="false">
+      <xs:extension base="EntityWithId">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Title" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Body" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Comments" type="ArrayOfComment" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Grades" type="ArrayOfGrade" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Author" type="Author" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ArticleTags" type="ArrayOfArticleTag" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EntityWithId">
     <xs:sequence>
-      <xs:element minOccurs="1" maxOccurs="1" name="ArticleId" type="xs:int" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Title" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Body" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Comments" type="ArrayOfComment" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Grades" type="ArrayOfGrade" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Author" type="Author" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Id" type="xs:int" />
     </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArticleTag">
+    <xs:complexContent mixed="false">
+      <xs:extension base="EntityWithId">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ArticleId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Author">
+    <xs:complexContent mixed="false">
+      <xs:extension base="EntityWithId">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="FirstName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LastName" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Age" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Grade">
+    <xs:complexContent mixed="false">
+      <xs:extension base="EntityWithId">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ArticleId" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="AuthorId" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Value" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Comment">
+    <xs:complexContent mixed="false">
+      <xs:extension base="EntityWithId">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Body" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ArticleId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="ArrayOfComment">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Comment" nillable="true" type="Comment" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="Comment">
-    <xs:sequence>
-      <xs:element minOccurs="1" maxOccurs="1" name="CommentId" type="xs:int" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Body" type="xs:string" />
-      <xs:element minOccurs="1" maxOccurs="1" name="ArticleId" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ArrayOfGrade">
@@ -28,20 +72,9 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Grade" nillable="true" type="Grade" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="Grade">
+  <xs:complexType name="ArrayOfArticleTag">
     <xs:sequence>
-      <xs:element minOccurs="1" maxOccurs="1" name="GradeId" type="xs:int" />
-      <xs:element minOccurs="1" maxOccurs="1" name="ArticleId" type="xs:int" />
-      <xs:element minOccurs="1" maxOccurs="1" name="AuthorId" type="xs:int" />
-      <xs:element minOccurs="1" maxOccurs="1" name="Value" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="Author">
-    <xs:sequence>
-      <xs:element minOccurs="1" maxOccurs="1" name="AuthorId" type="xs:int" />
-      <xs:element minOccurs="0" maxOccurs="1" name="FirstName" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="1" name="LastName" type="xs:string" />
-      <xs:element minOccurs="1" maxOccurs="1" name="Age" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ArticleTag" nillable="true" type="ArticleTag" />
     </xs:sequence>
   </xs:complexType>
 </xs:schema>

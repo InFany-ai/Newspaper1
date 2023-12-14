@@ -2,8 +2,8 @@
 
 namespace NewspaperConsole.Models;
 
-public class Comment : EntityWithId
+public class ArticleTag : EntityWithId
 {
-    public string Body { get; set; } = null!;
+    public string Name { get; set; } = null!;
     public int ArticleId { get; set; }
 }
