@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://article.nure.ua/entity/article/"
+           xmlns:n="http://article.nure.ua/entity/"
+           xmlns:tns="http://article.nure.ua/entity/article/"
+           elementFormDefault="qualified"
+>
+  <xsd:import namespace="http://article.nure.ua/entity/" schemaLocation="EntityWithId.xsd"/>
+  <xsd:include schemaLocation="ArticleTag.xsd"/>
+  <xsd:include schemaLocation="Author.xsd"/>
+  <xsd:include schemaLocation="Comment.xsd"/>
+  <xsd:include schemaLocation="Grade.xsd"/>
+
+  <xsd:complexType name="Article">
+    <xsd:complexContent>
+      <xsd:extension base="n:EntityWithId">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Title" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Body" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Author" type="tns:Author" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArticleTag" type="tns:ArticleTag" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Comment" type="tns:Comment" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Grade" type="tns:Grade" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+ 
+</xsd:schema>

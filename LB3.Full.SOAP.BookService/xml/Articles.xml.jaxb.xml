@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Articles xmlns="http://article.nure.ua/entity/article/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://article.nure.ua/entity/article/ Articles.xsd">
+    <Article Id="1">
+        <Title>TITLE</Title>
+        <Body>BODY</Body>
+        <Author Id="1">
+            <FirstName>First NAME</FirstName>
+            <LastName>LAST NAME</LastName>
+            <Age>10</Age>
+        </Author>
+        <ArticleTag Id="1">
+            <Name>Fantasy</Name>
+            <ArticleId>0</ArticleId>
+        </ArticleTag>
+        <ArticleTag Id="1">
+            <Name>Shtoto</Name>
+            <ArticleId>0</ArticleId>
+        </ArticleTag>
+        <Comment Id="1">
+            <Body>sdfskffmlpfmg</Body>
+            <ArticleId>1</ArticleId>
+        </Comment>
+        <Comment Id="2">
+            <Body>gfkfdfgdfgh</Body>
+            <ArticleId>1</ArticleId>
+        </Comment>
+        <Grade>
+            <ArticleId>1</ArticleId>
+            <Value>5</Value>
+        </Grade>
+        <Grade>
+            <ArticleId>1</ArticleId>
+            <Value>4</Value>
+        </Grade>
+    </Article>
+</Articles>

@@ -138,50 +138,50 @@ public class JAXBParser {
         System.out.println("--== JAXB Parser ==--");
         // load Articles object from NOT valid XML (success, just prints validation
         // warning)
-//        Articles articles = loadArticles(Const.XML_FILE, Const.XSD_FILE, Const.OBJECT_FACTORY);
-        Articles articles = new Articles();
-        Article article = new Article();
-        article.setId(1);
-        article.setBody("BODY");
-        article.setTitle("TITLE");
-
-        Author author = new Author();
-        author.setAge(10);
-        author.setId(1);
-        author.setLastName("LAST NAME");
-        author.setFirstName("First NAME");
-        article.setAuthor(author);
-
-        Comment comment = new Comment();
-        comment.setArticleId(1);
-        comment.setBody("sdfskffmlpfmg");
-        comment.setId(1);
-        article.getComment().add(comment);
-        comment = new Comment();
-        comment.setArticleId(1);
-        comment.setBody("gfkfdfgdfgh");
-        comment.setId(2);
-        article.getComment().add(comment);
-
-        Grade grade = new Grade();
-        grade.setValue(5);
-        grade.setArticleId(1);
-        article.getGrade().add(grade);
-        grade = new Grade();
-        grade.setValue(4);
-        grade.setArticleId(1);
-        article.getGrade().add(grade);
-
-        ArticleTag articleTag = new ArticleTag();
-        articleTag.setId(1);
-        articleTag.setName("Fantasy");
-        article.getArticleTag().add(articleTag);
-        articleTag = new ArticleTag();
-        articleTag.setId(1);
-        articleTag.setName("Shtoto");
-        article.getArticleTag().add(articleTag);
-
-        articles.getArticle().add(article);
+        Articles articles = loadArticles(Const.XML_FILE, Const.XSD_FILE, Const.OBJECT_FACTORY);
+//        Articles articles = new Articles();
+//        Article article = new Article();
+//        article.setId(1);
+//        article.setBody("BODY");
+//        article.setTitle("TITLE");
+//
+//        Author author = new Author();
+//        author.setAge(10);
+//        author.setId(1);
+//        author.setLastName("LAST NAME");
+//        author.setFirstName("First NAME");
+//        article.setAuthor(author);
+//
+//        Comment comment = new Comment();
+//        comment.setArticleId(1);
+//        comment.setBody("sdfskffmlpfmg");
+//        comment.setId(1);
+//        article.getComment().add(comment);
+//        comment = new Comment();
+//        comment.setArticleId(1);
+//        comment.setBody("gfkfdfgdfgh");
+//        comment.setId(2);
+//        article.getComment().add(comment);
+//
+//        Grade grade = new Grade();
+//        grade.setValue(5);
+//        grade.setArticleId(1);
+//        article.getGrade().add(grade);
+//        grade = new Grade();
+//        grade.setValue(4);
+//        grade.setArticleId(1);
+//        article.getGrade().add(grade);
+//
+//        ArticleTag articleTag = new ArticleTag();
+//        articleTag.setId(1);
+//        articleTag.setName("Fantasy");
+//        article.getArticleTag().add(articleTag);
+//        articleTag = new ArticleTag();
+//        articleTag.setId(1);
+//        articleTag.setName("Shtoto");
+//        article.getArticleTag().add(articleTag);
+//
+//        articles.getArticle().add(article);
         // we have Articles object at this point
         System.out.println("====================================");
         System.out.println("Here is the articles: \n" + articles);

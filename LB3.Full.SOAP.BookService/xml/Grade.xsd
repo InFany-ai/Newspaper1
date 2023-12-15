@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://article.nure.ua/entity/article/"
+           xmlns:ent="http://article.nure.ua/entity/"
+>
+    <xs:import namespace="http://article.nure.ua/entity/" schemaLocation="EntityWithId.xsd"/>
+    <xs:complexType name="Grade">
+        <xs:complexContent>
+            <xs:extension base="ent:EntityWithId">
+                <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="ArticleId" type="xs:int" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="Value" type="xs:int" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

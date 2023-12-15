@@ -37,6 +37,11 @@ public class DOMParser {
     private Article parseArticle(Node node) {
         Article article = new Article();
         NodeList nodes = node.getChildNodes();
+        Integer attrId = this.GetAttributeIdFromNode(node);
+        if (attrId != null) {
+            article.setId(attrId);
+        }
+
         for (int i = 0; i < nodes.getLength(); i++) {
             Node item = nodes.item(i);
             String localName = item.getLocalName();
