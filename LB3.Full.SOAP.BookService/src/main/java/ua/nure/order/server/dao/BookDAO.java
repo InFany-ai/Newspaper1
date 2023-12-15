@@ -2,6 +2,7 @@ package ua.nure.order.server.dao;
 
 import java.util.Collection;
 
+import ua.nure.article.server.dao.DAOException;
 import ua.nure.order.entity.Book;
 
 public interface BookDAO {

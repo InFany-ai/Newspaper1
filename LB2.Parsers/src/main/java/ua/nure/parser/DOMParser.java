@@ -26,7 +26,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import ua.nure.article.entity.article.*;
 
 public class DOMParser {
-    private static boolean logEnabled = false;
+    private static boolean logEnabled = true;
 
     private static void log(Object o) {
         if (logEnabled) {

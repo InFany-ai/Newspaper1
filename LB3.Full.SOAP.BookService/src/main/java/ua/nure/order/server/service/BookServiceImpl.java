@@ -8,7 +8,7 @@ import jakarta.xml.ws.Holder;
 import ua.nure.order.entity.Book;
 import ua.nure.order.server.dao.BookDAO;
 import ua.nure.order.server.dao.BookDAOInMemoryImpl;
-import ua.nure.order.server.dao.DAOException;
+import ua.nure.article.server.dao.DAOException;
 
 @HandlerChain(file = "security_handler.xml")
 @WebService(serviceName="Books",

@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SAXParser extends DefaultHandler {
-    private static final boolean LOG_ENABLED = false;
+    private static final boolean LOG_ENABLED = true;
 
     public static void log(Object o) {
         if (LOG_ENABLED) {

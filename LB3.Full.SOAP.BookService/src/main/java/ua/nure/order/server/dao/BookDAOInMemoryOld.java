@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ua.nure.article.server.dao.DAOException;
 import ua.nure.order.entity.Book;
 import ua.nure.order.entity.Category;
 

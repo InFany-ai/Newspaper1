@@ -73,7 +73,7 @@ public class EventHandler {
             }
 
             if(this.articleIdParent.equals(Const.TAG_GRADE)) {
-                this.comment.setArticleId(articleId);
+                this.grade.setArticleId(articleId);
             }
         } else if (Const.TAG_VALUE.equals(this.current)) {
             this.grade.setValue(Integer.parseInt(value));

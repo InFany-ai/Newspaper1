@@ -24,11 +24,11 @@
             <Body>gfkfdfgdfgh</Body>
             <ArticleId>1</ArticleId>
         </Comment>
-        <Grade>
+        <Grade Id="1">
             <ArticleId>1</ArticleId>
             <Value>5</Value>
         </Grade>
-        <Grade>
+        <Grade Id="2">
             <ArticleId>1</ArticleId>
             <Value>4</Value>
         </Grade>

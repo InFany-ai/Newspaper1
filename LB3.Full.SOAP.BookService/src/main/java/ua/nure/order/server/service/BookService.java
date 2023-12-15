@@ -8,8 +8,9 @@ import jakarta.jws.WebParam.Mode;
 import jakarta.jws.WebResult;
 import jakarta.jws.WebService;
 import jakarta.xml.ws.Holder;
+import ua.nure.article.server.service.Const;
 import ua.nure.order.entity.Book;
-import ua.nure.order.server.dao.DAOException;
+import ua.nure.article.server.dao.DAOException;
 
 @WebService(targetNamespace= Const.SERVICE_NS)
 public interface BookService {

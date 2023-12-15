@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import ua.nure.article.server.dao.DAOException;
 import ua.nure.dbtable.DBTable;
 import ua.nure.dbtable.DBTableFactory;
 import ua.nure.dbtable.Filter;
