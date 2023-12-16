@@ -17,9 +17,7 @@ public class Main {
                 "3. Add comment\n" +
                 "4. Add grade\n" +
                 "5. Find by article tag\n" +
-                "7. Exit\n" +
-                "8. Send with invalid token\n" +
-                "9. Send with valid token");
+                "6. Exit\n");
     }
 
     public static void main(String[] args) throws Exception {
@@ -49,21 +47,12 @@ public class Main {
                         break;
                     }
                     case 5 -> {
-//                        deletePost(client, sc);
+                        findByArticleTag(client, sc);
                         break;
                     }
+
                     case 6 -> {
-//                        findPostByHeader(client, sc);
-                        break;
-                    }
-                    case 7 -> {
                         return;
-                    }
-                    case 8 -> {
-                        CLIENT_TOKEN = null;
-                    }
-                    case 9 -> {
-                        CLIENT_TOKEN = CLIENT_TOKEN_VALID;
                     }
                     default -> {
                         System.out.println("Invalid option");
@@ -111,7 +100,7 @@ public class Main {
         System.out.println("Created article with id " + request);
     }
 
-    private static void createGrade(ArticleService service, Scanner scanner) throws DAOException_Exception {
+    private static  void createGrade(ArticleService service, Scanner scanner) throws DAOException_Exception {
         System.out.println("====Author====");
 
         var grade = new Grade();

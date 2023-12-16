@@ -7,16 +7,16 @@
 	<version>1.1</version>
 	<name>Books REST Web-Service</name>
 	<description>
-		REST Web service example implemented as Java Web application.
-		This project provides REST API only.
-	</description>
+        REST Web service example implemented as Java Web application.
+        This project provides REST API only.
+    </description>
 	<packaging>war</packaging>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- Java version -->
-		<java.version>17</java.version>
+		<java.version>21</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 
@@ -31,7 +31,7 @@
 		<jackson.core.version>2.13.4</jackson.core.version>
 
 		<!-- defines war name and context path -->
-		<appName>shop</appName>
+		<appName>article</appName>
 	</properties>
 
 	<dependencies>
@@ -250,7 +250,7 @@
                                         <url>http://localhost:8080/manager/text</url>
                                         <username>tomcat</username>
                                         <password>tomcat</password>
-                                        <path>/shop</path>
+                                        <path>/article</path>
                                     </configuration>
                                 </plugin>
                 -->
