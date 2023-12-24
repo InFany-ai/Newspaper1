@@ -1,8 +1,8 @@
 package ua.nure.article.server.service;
 
-import jakarta.jws.HandlerChain;
 import jakarta.jws.WebService;
 import ua.nure.article.entity.Article;
+import ua.nure.article.entity.ArticleTag;
 import ua.nure.article.entity.Comment;
 import ua.nure.article.entity.Grade;
 import ua.nure.article.server.dao.ArticleDAO;
@@ -32,6 +32,11 @@ public class ArticleServiceImpl implements ArticleService{
     @Override
     public int addGrade(Grade grade) throws DAOException {
         return articleDAO.addGrade(grade);
+    }
+
+    @Override
+    public int addArticleTag(ArticleTag articleTag) throws DAOException {
+        return articleDAO.addArticleTag(articleTag);
     }
 
     @Override

@@ -5,6 +5,7 @@ import jakarta.jws.WebParam;
 import jakarta.jws.WebResult;
 import jakarta.jws.WebService;
 import ua.nure.article.entity.Article;
+import ua.nure.article.entity.ArticleTag;
 import ua.nure.article.entity.Comment;
 import ua.nure.article.entity.Grade;
 import ua.nure.article.server.dao.DAOException;
@@ -28,6 +29,11 @@ public interface ArticleService {
     public int addGrade(
             @WebParam(name="Grade", targetNamespace="http://article.nure.ua/entity")
             Grade grade) throws DAOException;
+
+    @WebMethod()
+    public int addArticleTag(
+            @WebParam(name="ArticleTag", targetNamespace="http://article.nure.ua/entity")
+            ArticleTag articleTag   ) throws DAOException;
 
     @WebMethod()
     @WebResult(name="articleList", targetNamespace="http://article.nure.ua/entity" )

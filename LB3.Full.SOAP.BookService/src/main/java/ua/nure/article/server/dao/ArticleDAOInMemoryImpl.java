@@ -79,67 +79,46 @@ public class ArticleDAOInMemoryImpl implements ArticleDAO {
     private void initArticles() {
         Article[] articles = new Article[] {
                 newArticle(1,
-                        "Почему ASP, а не Java",
+                        "title1",
                         "Body1",
                         newAuthor("Джон", "Смит", 18),
-                        Arrays.asList(new ArticleTag[] { newArticleTag("Real", 1) }),
-                        Arrays.asList(new Comment[] { newComment("BEAUTIFUL1", 1) }),
-                        Arrays.asList(new Grade[] { newGrade(5, 1)})
+                        Arrays.asList(newArticleTag("Real", 1)),
+                        Arrays.asList(newComment("BEAUTIFUL1", 1)),
+                        Arrays.asList(newGrade(5, 1))
                         ),
                 newArticle(2,
-                        "Почему не Java, а ASP",
+                        "title2",
                         "Body2",
                         newAuthor("Джон", "Смит", 19),
-                        Arrays.asList(new ArticleTag[] { newArticleTag("Real Tomorrow", 2) }),
-                        Arrays.asList(new Comment[] { newComment("BEAUTIFUL2", 2) }),
-                        Arrays.asList(new Grade[] { newGrade(4, 2)})
+                        Arrays.asList(newArticleTag("Real Tomorrow", 2)),
+                        Arrays.asList(newComment("BEAUTIFUL2", 2)),
+                        Arrays.asList(newGrade(4, 2))
                 ),
                 newArticle(3,
-                        "Почему не Java",
+                        "title3",
                         "Body3",
                         newAuthor("Джон", "Смит", 20),
-                        Arrays.asList(new ArticleTag[] { newArticleTag("Fantasy", 3) }),
-                        Arrays.asList(new Comment[] { newComment("BEAUTIFUL3", 3) }),
-                        Arrays.asList(new Grade[] { newGrade(3, 3)})
+                        Arrays.asList(newArticleTag("Fantasy", 3)),
+                        Arrays.asList(newComment("BEAUTIFUL3", 3)),
+                        Arrays.asList(newGrade(3, 3))
                 ),
                 newArticle(4,
-                        "Почему ASP",
+                        "title4",
                         "Body4",
                         newAuthor("Джон", "Смит", 21),
-                        Arrays.asList(new ArticleTag[] { newArticleTag("Real today", 4) }),
-                        Arrays.asList(new Comment[] { newComment("BEAUTIFUL4", 4) }),
-                        Arrays.asList(new Grade[] { newGrade(4, 4)})
+                        Arrays.asList(newArticleTag("Real today", 4)),
+                        Arrays.asList(newComment("BEAUTIFUL4", 4)),
+                        Arrays.asList(newGrade(4, 4))
                 ),
         };
         for (int i = 0; i < articles.length; i++) {
             addArticle(articles[i]);
-//            List<ArticleTag> articleTags = articles[i].getArticleTag();
-//            for (int ag = 0; ag < articleTags.size(); ag++) {
-//                addArticleTag(articleTags.get(ag));
-//            }
-//
-//            List<Grade> grades = articles[i].getGrade();
-//            for (int ag = 0; ag < grades.size(); ag++) {
-//                addGrade(grades.get(ag));
-//            }
-//
-//            List<Comment> comments = articles[i].getComment();
-//            for (int ag = 0; ag < comments.size(); ag++) {
-//                addComment(comments.get(ag));
-//            }
-//
-//            Author author = articles[i].getAuthor();
-//            if(author != null)
-//            {
-//                addAuthor(articles[i].getAuthor());
-//            }
         }
     }
 
     @Override
     public Collection<Article> listArticles() {
-        var a = this.articles.selectAll();
-        return a;
+        return this.articles.selectAll();
     }
 
     @Override
@@ -175,64 +154,13 @@ public class ArticleDAOInMemoryImpl implements ArticleDAO {
 
         this.articles.insert(article);
 
-//        List<ArticleTag> articleTags1 = article.getArticleTag();
-//        for (int ag = 0; ag < articleTags1.size(); ag++) {
-//            var articleTag = articleTags1.get(ag);
-//            articleTag.setId(id);
-//            var agId = articleTags.insert(articleTag);
-//            try {
-//                articleTags.update(id, articleTag);
-//            } catch (SQLException e) {
-//                // inmemory
-//            }
-//        }
-//
-//        List<Grade> grades1 = article.getGrade();
-//        for (int ag = 0; ag < grades1.size(); ag++) {
-//            var grade = grades1.get(ag);
-//            grade.setId(id);
-//            var agId = grades.insert(grade);
-//            try {
-//                grades.update(id, grade);
-//            } catch (SQLException e) {
-//                // inmemory
-//            }
-//        }
-//
-//        List<Comment> comments1 = article.getComment();
-//        for (int ag = 0; ag < comments1.size(); ag++) {
-//            var comment = comments1.get(ag);
-//            comment.setId(id);
-//            var agId = comments.insert(comment);
-//            try {
-//                comments.update(id, comment);
-//            } catch (SQLException e) {
-//                // inmemory
-//            }
-//        }
-//
-//        Author author = article.getAuthor();
-//        if(author != null)
-//        {
-//            var agId = authors.insert(author);
-//            try {
-//                authors.update(id, author);
-//            } catch (SQLException e) {
-//                // inmemory
-//            }
-//        }
-
         return id;
     }
 
     @Override
     public int addGrade(Grade grade) {
-        var article = this.articles.filter(grade.getArticleId(), articleFilterById).iterator().next();
-
-        article.getGrade().sort(byGradeId);
-        var size = article.getGrade().size();
-        var lastGrade = article.getGrade().get(size - 1);
-        grade.setId(lastGrade.getId() + 1);
+        var article = getArticleById(grade.getArticleId());
+        grade.setId(GetUniqId());
         article.getGrade().add(grade);
 
         return grade.getId();
@@ -241,11 +169,7 @@ public class ArticleDAOInMemoryImpl implements ArticleDAO {
     @Override
     public int addArticleTag(ArticleTag articleTag) {
         var article = getArticleById(articleTag.getArticleId());
-
-        article.getArticleTag().sort(byArticleTagId);
-        var size = article.getArticleTag().size();
-        var lastArticleTag = article.getArticleTag().get(size - 1);
-        articleTag.setId(lastArticleTag.getId() + 1);
+        articleTag.setId(GetUniqId());
         article.getArticleTag().add(articleTag);
 
         return articleTag.getId();
@@ -255,11 +179,7 @@ public class ArticleDAOInMemoryImpl implements ArticleDAO {
     @Override
     public int addComment(Comment comment) {
         var article = getArticleById(comment.getArticleId());
-
-        article.getComment().sort(byCommentId);
-        var size = article.getComment().size();
-        var lastComment = article.getComment().get(size - 1);
-        comment.setId(lastComment.getId() + 1);
+        comment.setId(GetUniqId());
         article.getComment().add(comment);
 
         return comment.getId();
@@ -289,41 +209,6 @@ public class ArticleDAOInMemoryImpl implements ArticleDAO {
         return this.articles.filter(id, articleFilterById).iterator().next();
     }
 
-    Comparator<Article> byArticleId = new Comparator<Article>() {
-        @Override
-        public int compare(Article o1, Article o2) {
-            return Integer.compare(o1.getId(), o2.getId());
-        }
-    };
-
-    Comparator<Grade> byGradeId = new Comparator<Grade>() {
-        @Override
-        public int compare(Grade o1, Grade o2) {
-            return Integer.compare(o1.getId(), o2.getId());
-        }
-    };
-
-    Comparator<Comment> byCommentId = new Comparator<Comment>() {
-        @Override
-        public int compare(Comment o1, Comment o2) {
-            return Integer.compare(o1.getId(), o2.getId());
-        }
-    };
-
-    Comparator<Author> byAuthorId = new Comparator<Author>() {
-        @Override
-        public int compare(Author o1, Author o2) {
-            return Integer.compare(o1.getId(), o2.getId());
-        }
-    };
-    Comparator<ArticleTag> byArticleTagId = new Comparator<ArticleTag>() {
-        @Override
-        public int compare(ArticleTag o1, ArticleTag o2) {
-            return Integer.compare(o1.getId(), o2.getId());
-        }
-    };
-
-
     Filter<Article> articleFilterById = new Filter<>() {
         @Override
         public boolean accept(Article item, Object pattern) {
@@ -335,5 +220,4 @@ public class ArticleDAOInMemoryImpl implements ArticleDAO {
             return false;
         }
     };
-
 }
