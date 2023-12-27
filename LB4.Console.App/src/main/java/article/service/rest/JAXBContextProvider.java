@@ -1,4 +1,4 @@
-package shop.service.rest;
+package article.service.rest;
 
 import jakarta.ws.rs.ext.ContextResolver;
 import jakarta.ws.rs.ext.Provider;

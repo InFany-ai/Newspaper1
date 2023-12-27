@@ -81,7 +81,7 @@ public class ArticleDAOInMemoryImpl implements ArticleDAO {
     private void initArticles() {
         Article[] articles = new Article[] {
                 newArticle(1,
-                        "Почему ASP, а не Java",
+                        "title1",
                         "Body1",
                         newAuthor("Джон", "Смит", 18),
                         Arrays.asList(new ArticleTag[] { newArticleTag("Real", 1) }),
@@ -89,7 +89,7 @@ public class ArticleDAOInMemoryImpl implements ArticleDAO {
                         Arrays.asList(new Grade[] { newGrade(5, 1)})
                         ),
                 newArticle(2,
-                        "Почему не Java, а ASP",
+                        "title1",
                         "Body2",
                         newAuthor("Джон", "Смит", 19),
                         Arrays.asList(new ArticleTag[] { newArticleTag("Real Tomorrow", 2) }),
@@ -97,7 +97,7 @@ public class ArticleDAOInMemoryImpl implements ArticleDAO {
                         Arrays.asList(new Grade[] { newGrade(4, 2)})
                 ),
                 newArticle(3,
-                        "Почему не Java",
+                        "title1",
                         "Body3",
                         newAuthor("Джон", "Смит", 20),
                         Arrays.asList(new ArticleTag[] { newArticleTag("Fantasy", 3) }),
@@ -105,7 +105,7 @@ public class ArticleDAOInMemoryImpl implements ArticleDAO {
                         Arrays.asList(new Grade[] { newGrade(3, 3)})
                 ),
                 newArticle(4,
-                        "Почему ASP",
+                        "title1",
                         "Body4",
                         newAuthor("Джон", "Смит", 21),
                         Arrays.asList(new ArticleTag[] { newArticleTag("Real today", 4) }),
@@ -230,11 +230,7 @@ public class ArticleDAOInMemoryImpl implements ArticleDAO {
     @Override
     public int addGrade(Grade grade) {
         var article = this.articles.filter(grade.getArticleId(), articleFilterById).iterator().next();
-
-        article.getGrade().sort(byGradeId);
-        var size = article.getGrade().size();
-        var lastGrade = article.getGrade().get(size - 1);
-        grade.setId(lastGrade.getId() + 1);
+        grade.setId(GetUniqId());
         article.getGrade().add(grade);
 
         return grade.getId();
@@ -243,11 +239,7 @@ public class ArticleDAOInMemoryImpl implements ArticleDAO {
     @Override
     public int addArticleTag(ArticleTag articleTag) {
         var article = getArticleById(articleTag.getArticleId());
-
-        article.getArticleTag().sort(byArticleTagId);
-        var size = article.getArticleTag().size();
-        var lastArticleTag = article.getArticleTag().get(size - 1);
-        articleTag.setId(lastArticleTag.getId() + 1);
+        articleTag.setId(GetUniqId());
         article.getArticleTag().add(articleTag);
 
         return articleTag.getId();
@@ -257,11 +249,8 @@ public class ArticleDAOInMemoryImpl implements ArticleDAO {
     @Override
     public int addComment(Comment comment) {
         var article = getArticleById(comment.getArticleId());
+        comment.setId(GetUniqId());
 
-        article.getComment().sort(byCommentId);
-        var size = article.getComment().size();
-        var lastComment = article.getComment().get(size - 1);
-        comment.setId(lastComment.getId() + 1);
         article.getComment().add(comment);
 
         return comment.getId();

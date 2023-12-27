@@ -1,0 +1,8 @@
+<p>
+	<a href="list">List</a> |
+	<a href="add.jsp">Add new</a> |
+	<a href="addcomment.jsp">Add comment</a> |
+	<a href="addgrade.jsp">Add grade</a> |
+	<a href="findarticletag.jsp">Find by article tag</a> |
+</p>
+<hr />

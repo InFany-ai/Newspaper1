@@ -45,7 +45,8 @@ public class AppServer {
 
         System.out.println("Application started.\n"
                 + "Try accessing " + getBaseURI(Constants.BASE_URI, Constants.PORT, Constants.APPLICATION_PATH, Constants.ARTICLES_SERVICE_PATH) +" in the browser.\n");
-
+        System.out.println("WADL generated.\n"
+                + "Try accessing " + Constants.WADL_PATH + " in the browser.\n");
         Thread.currentThread().join();
 
     }

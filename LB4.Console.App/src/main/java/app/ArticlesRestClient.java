@@ -9,14 +9,13 @@ import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import shop.service.Constants;
-import shop.service.rest.JAXBContextProvider;
-import shop.service.rest.JSONMessageBodyReader;
+import article.service.Constants;
+import article.service.rest.JAXBContextProvider;
+import article.service.rest.JSONMessageBodyReader;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.math.BigInteger;
 import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

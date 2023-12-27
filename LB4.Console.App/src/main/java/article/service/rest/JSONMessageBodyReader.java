@@ -1,4 +1,4 @@
-package shop.service.rest;
+package article.service.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.ws.rs.Consumes;
